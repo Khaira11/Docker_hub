@@ -10,13 +10,13 @@ pipeline{
                     withCredentials([string(credentialsId: 'docker-h', variable: 'doc-pass')] {
                         sh '''
                          docker build -t khaira23/testapp:${VERSION} .
-                         echo $docker_p | docker login -u khaira23 --password-stdin  
+                         echo $doc-pass | docker login -u khaira23 --password-stdin  
                          docker push khaira23/testapp:${VERSION} 
                          docker rmi khaira23/testapp:${VERSION}            
                         '''
                     }
-                }
-            } 
-        }
-     }
-  }
+                 }
+              } 
+           }
+        }  
+     } 
